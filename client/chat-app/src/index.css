@@ -20,9 +20,27 @@ code {
 .height-inherit {height: inherit}
 .flex {display: flex;}
 .flex-justify-spacebetween {justify-content: space-between;}
+
 .pad-1-lg {padding: 1em;}
+.pad-1-l {padding-left: 2em;}
+.pad-1-r {padding-right: 2em;}
+.pad-1-t {padding-top: 2em;}
+.pad-1-b {padding-bottom: 2em;}
+
 .pad-2-lg {padding: 2em;}
+.pad-2-l {padding-left: 2em;}
+.pad-2-r {padding-right: 2em;}
+.pad-2-t {padding-top: 2em;}
+.pad-2-b {padding-bottom: 2em;}
+
 .flex-column {display:flex; flex-direction: column; }
 .row-gap {
   gap: 1em;
+}
+.flex-row {display:flex; flex-direction: row;}
+.flex-colum {display:flex; flex-direction: column;}
+.flex-align-center { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

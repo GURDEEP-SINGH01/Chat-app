@@ -1,5 +1,22 @@
 {
-  "dependencies": {
-    "express": "^4.19.2"
-  }
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.19.2",
+        "mongodb": "^6.6.1",
+        "mongoose": "^8.3.4",
+        "socket.io": "^4.7.5"
+    },
+    "devDependencies": {
+        "@babel/eslint-parser": "^7.24.5",
+        "@eslint/js": "^9.2.0",
+        "eslint": "^9.2.0",
+        "eslint-plugin-react": "^7.34.1",
+        "globals": "^15.1.0"
+    }
 }

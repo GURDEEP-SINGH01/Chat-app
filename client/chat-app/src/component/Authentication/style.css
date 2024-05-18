@@ -1,0 +1,26 @@
+.username-pad {
+    padding-right:2em;
+}
+.password-pad {
+    padding-right:.6em;
+}
+.user_pass_pad {
+    padding-bottom:1.5em;
+}
+.input{
+    border: 0;
+    border-radius: .6em;
+    height: 1.4rem;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 1em;font-weight: 600;
+    color: rgb(0, 0, 0);
+}
+input[type="text"]::placeholder {
+    text-align: center;
+}
+input[type="password"]::placeholder {
+    text-align: center;
+}   
+input:focus{
+    outline: none;
+}
