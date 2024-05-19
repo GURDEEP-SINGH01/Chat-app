@@ -36,13 +36,27 @@ const io=new Server(server,{
 app.use('/chatapp',routes)
 
 io.on("connection",(socket)=>{
-    socket.on('chat message',msg=>{
-      io.emit('chat message',msg)
-      console.log("a new user connected",msg)
+    socket.on('chat message',(msgdata)=>{
+      // Assuming recipientId is the unique identifier of the recipient user]
+      console.log('messagedata',msgdata.recipientId,msgdata.message)
+      socket.to(msgdata.recipientId).emit('chat message',{ from: msgdata.senderId, message: msgdata.message })
     })  
-    socket.on('typing',()=>{
-      socket.broadcast.emit('typing')
+    socket.on('typing',(recipientId)=>{
+      console.log(recipientId,'typing')
+      socket.to(recipientId).emit('typing')
     })
+    
+    // Joining a room with a unique identifier for each user
+    socket.on('join', (userId) => {
+        socket.join(userId);
+        console.log("User joined room", userId);
+    });
+
+     // Leaving the room when disconnected
+    socket.on('disconnect', () => {
+        socket.leaveAll(); // Leave all rooms
+        console.log("User disconnected");
+    });
 })
 
 server.listen(9000,()=>{console.log("listening to server 9000")})   

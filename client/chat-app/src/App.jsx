@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 export const App = () => {
   const [authentication, setAuthentication] = useState('');
+  const [loggedUser, setLoggedUser] = useState(null)
   const [userList, setUserList] = useState([]);
 
 
@@ -14,7 +15,7 @@ export const App = () => {
       try {
         const response = await axios.get('http://localhost:9000/chatapp/allUsers');
         if (response.status === 200) {
-          const data = response.data; // Axios automatically parses JSON response]
+          const data = response.data;
           console.log(response.data)
           setUserList(data);
         } else {
@@ -35,10 +36,21 @@ export const App = () => {
           <Routes>
             <Route exact
               path="/"
-              element={<Signin authentication={authentication} setAuthentication={setAuthentication} />} />
+              element={
+                <Signin
+                  authentication={authentication}
+                  setAuthentication={setAuthentication}
+                  setLoggedUser={setLoggedUser} />
+              } />
             <Route exact
               path='/layout'
-              element={<Layout authentication={authentication} userList={userList} setUserList={setUserList} />} />
+              element={
+                <Layout
+                  authentication={authentication}
+                  userList={userList}
+                  loggedUser={loggedUser}
+                  setUserList={setUserList} />
+              } />
           </Routes>
         </div>
       </Router>

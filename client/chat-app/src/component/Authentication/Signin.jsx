@@ -4,14 +4,16 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import io from 'socket.io-client';
 const socket = io('http://localhost:9000');
-export const Signin = ({ authentication, setAuthentication }) => {
+export const Signin = ({ authentication, setAuthentication, setLoggedUser }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (authentication === 'Sign-in successful')
+        if (authentication === 'Sign-in successful') {
+            setLoggedUser(username)
             navigate('/layout')
+        }
         else navigate('/')
     }, [authentication]);
 
