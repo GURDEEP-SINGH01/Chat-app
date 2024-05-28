@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 export const App = () => {
-  const [authentication, setAuthentication] = useState('');
   const [loggedUser, setLoggedUser] = useState(null)
   const [userList, setUserList] = useState([]);
 
@@ -38,18 +37,15 @@ export const App = () => {
               path="/"
               element={
                 <Signin
-                  authentication={authentication}
-                  setAuthentication={setAuthentication}
+                  loggedUser={loggedUser}
                   setLoggedUser={setLoggedUser} />
               } />
             <Route exact
               path='/layout'
               element={
                 <Layout
-                  authentication={authentication}
                   userList={userList}
-                  loggedUser={loggedUser}
-                  setUserList={setUserList} />
+                  loggedUser={loggedUser} />
               } />
           </Routes>
         </div>

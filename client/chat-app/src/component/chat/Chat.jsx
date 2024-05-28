@@ -1,49 +1,43 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "../../index.css";
 import io from 'socket.io-client';
-const socket = io('http://localhost:9000');
-export const Chat = ({ senderId, receiverId = { senderId } }) => {
-    const [messages, setMessages] = useState(['Hi'])
+import axios from "axios";
+
+export const Chat = ({ senderId, receiverId }) => {
+    const [messages, setMessages] = useState([])
     const [inputText, setInputText] = useState('')
     const [typing, setIsTyping] = useState(false);
-
-    useEffect(() => {
-        socket.emit('join', senderId);
-        const handleMessage = (message) => {
-            setMessages((prevMessages) => [...prevMessages, message]);
-        };
-
-        const handleTyping = () => {
-            setIsTyping(true);
-            setTimeout(() => { setIsTyping(false); }, 2000);
-        };
-
-        socket.on('chat message', handleMessage);
-        socket.on('typing', handleTyping);
-
-        return () => {
-            socket.off('chat message', handleMessage);
-            socket.off('typing', handleTyping);
-        };
-    }, [senderId]);
-
-    // console.log(receiverId)
-    const onTextChange = (event) => {
-        socket.emit('typing', senderId)
-        setInputText(event.target.value)
-    }
-
-    const sendText = () => {
+    const socket = useRef(null);
+    console.log(senderId, receiverId)
+    const sendText = async () => {
         if (inputText.trim() !== '') {
-            // socket.emit('chat message', inputText)
-            // setInputText('');]
-            console.log('receiverId', receiverId)
-            socket.emit('chat message', { senderId, recipientId: receiverId, message: inputText });
-            setMessages((prevMessages) => [...prevMessages, { from: 'Me', message: inputText }]);
+            await axios.post('http://localhost:9000/chatapp/addMessage',
+                {
+                    to: senderId._id,
+                    from: receiverId._id,
+                    message: inputText
+                })
+            setMessages((prevMessages) => [...prevMessages, { fromSelf: true, message: inputText }]);
             setInputText('');
         }
     }
+    useEffect(() => {
+        const response = async () => {
+            const dataresponse = await axios.post('http://localhost:9000/chatapp/getMessage', {
+                from: receiverId._id,
+                to: senderId._id
+            })
+            console.log('datarespnse.data', dataresponse.data)
+            setMessages(dataresponse.data);
+        }
+        response()
+    }, [senderId, receiverId])
+
     const clearAll = () => { setMessages(['']) }
+
+    const onTextChange = (event) => {
+        setInputText(event.target.value)
+    }
     return (
         <div className='flex-column pad-1-lg' >
             <div id="chat-header">
@@ -53,8 +47,15 @@ export const Chat = ({ senderId, receiverId = { senderId } }) => {
             <div id="display-messeges" style={{ height: "10rem", backgroundColor: 'white', overflowY: 'auto' }}>
                 {
                     messages.map((message, index) => (
-                        // <div key={index}>{message}</div>]
-                        <div key={index}><strong>{message.from}:</strong> {message.message}</div>
+                        <div key={index}>
+                            <div
+                                className={`message ${message.fromSelf ? "sended" : "recieved"}`}
+                            >
+                                <div className="content ">
+                                    <p>{message.message}</p>
+                                </div>
+                            </div>
+                        </div>
                     ))
                 }
             </div>

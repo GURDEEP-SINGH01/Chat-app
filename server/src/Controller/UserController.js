@@ -20,9 +20,9 @@ exports.signIn = async (req, res) => {
   try {
     const user = await User.findOne({ username, password });
     if (user) {
-      res.json({ success: true, message: 'Sign-in successful' });
+      res.json({ success: true, message: 'Sign-in successful',body:user });
     } else {
-      res.status(401).json({ success: false, message: 'Invalid username or password' });
+      res.json({ success: false, message: 'Invalid username or password' });
     }
   } catch (error) {
     res.status(500).json({ success: false, message: 'Server error' });
