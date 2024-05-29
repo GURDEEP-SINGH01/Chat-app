@@ -29,7 +29,7 @@ export const App = () => {
 
 
   return (
-    <div className="width-fl height-fl" style={{ backgroundColor: "red" }}>
+    <div className="width-fl height-fl" >
       <Router>
         <div>
           <Routes>

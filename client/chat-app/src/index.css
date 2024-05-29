@@ -38,7 +38,6 @@ code {
   gap: 1em;
 }
 .flex-row {display:flex; flex-direction: row;}
-.flex-colum {display:flex; flex-direction: column;}
 .flex-align-center { 
   display: flex;
   align-items: center;
