@@ -1,8 +1,8 @@
 import React from 'react'
 import "../../index.css";
-export const ChatProfile = ({ currentUser, setCurrentUser }) => {
+export const ChatProfile = ({ currentUser, setOpenChatProfile }) => {
     const handleOnCloseProfile = () => {
-        setCurrentUser(null);
+        setOpenChatProfile(false);
     }
     return (
         <div>
@@ -14,7 +14,7 @@ export const ChatProfile = ({ currentUser, setCurrentUser }) => {
                 <div className='flex'>
                     <p>photo</p>
                 </div>
-                <div>name:{currentUser.username}</div>
+                <div>name:{currentUser?.username}</div>
                 <div>contact</div>
             </div>
         </div>

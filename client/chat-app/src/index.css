@@ -22,10 +22,10 @@ code {
 .flex-justify-spacebetween {justify-content: space-between;}
 
 .pad-1-lg {padding: 1em;}
-.pad-1-l {padding-left: 2em;}
-.pad-1-r {padding-right: 2em;}
-.pad-1-t {padding-top: 2em;}
-.pad-1-b {padding-bottom: 2em;}
+.pad-1-l {padding-left: 1em;}
+.pad-1-r {padding-right: 1em;}
+.pad-1-t {padding-top: 1em;}
+.pad-1-b {padding-bottom: 1em;}
 
 .pad-2-lg {padding: 2em;}
 .pad-2-l {padding-left: 2em;}
@@ -42,4 +42,32 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: block;
+  margin:15px auto;
+  position: relative;
+  background: #FFF;
+  box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+  box-sizing: border-box;
+  animation: shadowPulse 2s linear infinite;
+}
+
+@keyframes shadowPulse {
+  33% {
+    background: #FFF;
+    box-shadow: -24px 0 pink, 24px 0 #FFF;
+  }
+  66% {
+    background: pink;
+    box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+  }
+  100% {
+    background: #FFF;
+    box-shadow: -24px 0 #FFF, 24px 0 pink;
+  }
 }

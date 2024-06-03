@@ -1,0 +1,43 @@
+.width-fl {width:100vw;}
+.height-fl {height:100vh;}
+.height-inherit {height: inherit}
+.flex {display: flex;}
+.flex-justify-spacebetween {justify-content: space-between;}
+
+.pad-1-lg {padding: 1em;}
+.pad-1-l {padding-left: 1em;}
+.pad-1-r {padding-right: 1em;}
+.pad-1-t {padding-top: 1em;}
+.pad-1-b {padding-bottom: 1em;}
+
+.pad-2-lg {padding: 2em;}
+.pad-2-l {padding-left: 2em;}
+.pad-2-r {padding-right: 2em;}
+.pad-2-t {padding-top: 2em;}
+.pad-2-b {padding-bottom: 2em;}
+
+.flex-column {display:flex; flex-direction: column; }
+.row-gap {
+  gap: 1em;
+}
+.flex-row {display:flex; flex-direction: row;}
+.flex-align-center { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sender {
+    display:flex;
+    justify-content: flex-end;
+    border-bottom: .1em solid rgb(0, 0, 0, 0.215);
+    padding: 0;
+}
+.recieved {
+    display:flex;
+    justify-content: flex-start;
+    border-bottom: .1em solid rgba(0, 0, 0, 0.215);
+    padding: 0;
+}
+.container::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}

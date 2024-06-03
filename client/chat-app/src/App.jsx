@@ -15,7 +15,7 @@ export const App = () => {
         const response = await axios.get('http://localhost:9000/chatapp/allUsers');
         if (response.status === 200) {
           const data = response.data;
-          console.log(response.data)
+          // console.log(response.data)
           setUserList(data);
         } else {
           throw new Error('Failed to fetch users');

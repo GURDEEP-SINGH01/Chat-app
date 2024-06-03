@@ -16,23 +16,22 @@ exports.getMessage=async(req,res)=>{
       ]
 
     }).sort({ updatedAt: 1 });
-    console.log(messages,'messageshere')
+    // console.log(messages,'messageshere')
     const projectedMessages = messages.map((msg) => {
       return {
         fromSelf: msg.sender.toString() === from,
         message: msg.message.text,
       };
     });
-    console.log(projectedMessages,'pmsg')
     res.json(projectedMessages);
-    }catch(err){console.log(err.message)
+    }catch(err){
         res.status(500).send({message:"Error"})
     }
 }
 
 exports.addMessage = async (req, res) => {
   try {
-    const { from, to, message } = req.body;console.log('very',from,to,message)
+    const { from, to, message } = req.body;
 
     const data = new Messages({
       message: { text: message },
@@ -40,10 +39,10 @@ exports.addMessage = async (req, res) => {
       sender: from,
     });
     
-    console.log('here1',data); const messagedata = await data.save();
+    const messagedata = await data.save();
     if (messagedata) return res.json({ msg: "Message added successfully." });
     else return res.json({ msg: "Failed to add message to the database" });
-  } catch (ex) {console.log(ex)
+  } catch (ex) {
     res.status(500).send({message:"Error"})
   }
 };

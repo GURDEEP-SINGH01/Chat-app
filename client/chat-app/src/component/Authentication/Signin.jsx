@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import './style.css'
+import './siginingStyle.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import io from 'socket.io-client';
-const socket = io('http://localhost:9000');
 export const Signin = ({ loggedUser, setLoggedUser }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
