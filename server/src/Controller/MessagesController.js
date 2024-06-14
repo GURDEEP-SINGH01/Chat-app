@@ -14,7 +14,6 @@ exports.getMessage=async(req,res)=>{
         { users: [fromObjectId, toObjectId] },
         { users: [toObjectId, fromObjectId] }
       ]
-
     }).sort({ updatedAt: 1 });
     // console.log(messages,'messageshere')
     const projectedMessages = messages.map((msg) => {
@@ -25,7 +24,7 @@ exports.getMessage=async(req,res)=>{
     });
     res.json(projectedMessages);
     }catch(err){
-        res.status(500).send({message:"Error"})
+        res.status(500).send({message:"Error cant get message"})
     }
 }
 
@@ -43,6 +42,27 @@ exports.addMessage = async (req, res) => {
     if (messagedata) return res.json({ msg: "Message added successfully." });
     else return res.json({ msg: "Failed to add message to the database" });
   } catch (ex) {
-    res.status(500).send({message:"Error"})
+    res.status(500).send({message:"Error cant send message"})
   }
 };
+exports.findlast=async(req,res)=>{
+  try{
+    const {from,to}=req.body;
+    const fromObjectId = new mongoose.Types.ObjectId(from);
+    const toObjectId = new mongoose.Types.ObjectId(to);
+    const recentMessage = await Messages.deleteOne({
+            $or: [
+        { users: [fromObjectId, toObjectId] },
+        { users: [toObjectId, fromObjectId] }
+      ]
+    }).sort({ createdAt: 1 });
+    console.log(recentMessage)
+    if (recentMessage) {
+      res.json(recentMessage);
+    } else {
+      res.status(404).json({ message: 'No messages found' });
+    }
+  }catch(err){
+    res.status(500).json({ error: err.message });
+  }
+}

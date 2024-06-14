@@ -12,7 +12,7 @@ export const Layout = ({ userList, loggedUser }) => {
     }
     return (
         <div className="width-fl height-fl" style={{ backgroundColor: "pink" }}>
-            <div className=" flex pad-2-l pad-2-t" style={{ height: 'fit-content' }}>
+            <div className="flex pad-2-l" style={{ height: "inherit" }}>
                 <div className="col-2 " style={{ width: "20vw", backgroundColor: "pink", border: "1px solid", borderRadius: ".7em 0 0 0" }}>
                     <ConnectedUsers
                         userList={userList}
@@ -20,7 +20,6 @@ export const Layout = ({ userList, loggedUser }) => {
                         setOpenChatProfile={setOpenChatProfile} />
                 </div>
                 <div className="col-8 " style={{ width: "100vw", backgroundColor: "red" }}>
-                    {currentUser?.username}
                     {loggedUser && <Chat senderId={loggedUser} receiverId={currentUser ? currentUser : loggedUser} />}
                 </div>
                 {openChatProfile && <div className="col-2" style={{ width: "30vw", backgroundColor: "pink", border: "1px solid", }}>

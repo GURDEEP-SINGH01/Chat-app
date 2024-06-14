@@ -9,6 +9,6 @@ routes.get('/allUsers',userController.allUsers)
 
 routes.post('/getMessage',messageController.getMessage)
 routes.post('/addMessage',messageController.addMessage)
-
+routes.post('/deleteMessage',messageController.findlast)
 
 module.exports = routes;

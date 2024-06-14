@@ -53,31 +53,29 @@ export const Chat = ({ senderId, receiverId }) => {
     const onTextChange = (event) => {
         setInputText(event.target.value)
     }
+    const lineBreak = (message) => { }
+
     return (
         <div className='flex-column' >
-            <div id="chat-header">
-                {typing && <p>Typing...</p>}
-                <button onClick={clearAll}>clear</button><button>logout</button>
-            </div>
-            <div id="display-messeges" className='container' style={{ height: "10rem", backgroundColor: 'white', overflowY: 'auto' }}>
+            <header>{receiverId?.username}</header>
+            <section id="display-messages" className='container' style={{ backgroundColor: 'white', overflowY: 'auto' }}>
                 {
                     messages.map((message, index) => (
-                        <div key={index}>
-                            <div key={index}
-                                className={`${message?.fromSelf ? "sender" : "recieved"} pad-1-l pad-1-r`}
-                            >
-                                <div className="content ">
-                                    <p style={{ margin: '0' }}>{message?.message}</p>
-                                </div>
+                        <div key={index}
+                            className={`${message?.fromSelf ? "sender" : "recieved"} pad-1-l pad-1-r`}
+                        >
+                            <div className="content">
+                                <p style={{ margin: '0' }}
+                                >{message?.message}</p>
                             </div>
                         </div>
                     ))
                 }
-            </div>
-            <div id="write-messages">
+            </section >
+            <div id="write-messages" className='enterText'>
                 <input value={inputText} onChange={onTextChange} placeholder='Enter text here' />
                 <button onClick={sendText}>send</button >
             </div>
-        </div>
+        </div >
     )
 }
