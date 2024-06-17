@@ -22,8 +22,9 @@ export const Signin = ({ loggedUser, setLoggedUser }) => {
                 username,
                 password
             });
-            if (response.status === 200 && response.data.success) {
-                setLoggedUser(response.data.body);
+            if (response?.status === 200 && response?.data?.success) {
+                localStorage.setItem('loggedUser', JSON.stringify(response?.data?.body))
+                setLoggedUser(response?.data?.body);
             } else {
                 setInvalidUser(true);
                 setUsername('');

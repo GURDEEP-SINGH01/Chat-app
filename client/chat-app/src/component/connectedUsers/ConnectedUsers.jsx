@@ -15,7 +15,7 @@ export const ConnectedUsers = ({ userList, setCurrentUser, setOpenChatProfile })
         <div className='userlistContainer'>
             <ul className='pad-1-l' style={{ alignItems: 'flex-start' }}>
                 {userList.map((user, index) => (
-                    <div key={index} className='pad-1-t ' >
+                    <div key={index} className='pad-1-t flex' >
                         <img src={image} alt='My Image' onClick={() => openCurrentProfile(user)} style={{ width: '1em', height: '1em' }} />
                         <span onClick={() => handleUserClick(user)}>{user.username}</span>
                     </div>

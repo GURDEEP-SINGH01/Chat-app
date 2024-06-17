@@ -118,7 +118,7 @@
 }
 
 .enterText {
-  flex: 0 1 auto;
+  display: flex;
 }
 
 .chat-wrapper {

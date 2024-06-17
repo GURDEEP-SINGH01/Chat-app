@@ -45,7 +45,7 @@ export const App = () => {
               element={
                 <Layout
                   userList={userList}
-                  loggedUser={loggedUser} />
+                  loggedUser={loggedUser} setLoggedUser={setLoggedUser} />
               } />
           </Routes>
         </div>

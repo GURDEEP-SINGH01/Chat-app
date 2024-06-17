@@ -2,12 +2,23 @@ import React, { useEffect, useRef, useState } from 'react';
 import "./chatStyles.css";
 import io from 'socket.io-client';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { Textarea } from 'src/components/ui/textarea';
+import { Button } from 'src/components/ui/button';
 
 export const Chat = ({ senderId, receiverId }) => {
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState('');
     const socket = useRef(null);
-
+    const navigate = useNavigate();
+    useEffect(() => {
+        senderId = JSON.parse(localStorage.getItem('loggedUser'));
+        if (senderId === null) {
+            // If loggedUser is not defined, render a loading state or redirect to sign-in
+            navigate('/')
+            // return <div className="flex-align-center height-fl"><div className="loader" /></div>;
+        }
+    }, [senderId]);
     const sendText = async () => {
         if (inputText.trim() !== '') {
             await axios.post('http://localhost:9000/chatapp/addMessage', {
@@ -52,7 +63,12 @@ export const Chat = ({ senderId, receiverId }) => {
 
     return (
         <div className='flex-column chat-wrapper'>
-            <header>{receiverId?.username}</header>
+            <header style={{
+                border: ".1em solid black",
+                borderLeft: "none",
+                borderRadius: "none"
+            }}
+            >{receiverId?.username}</header>
             <section id="display-messages" className='container'>
                 {
                     messages.map((message, index) => (
@@ -67,8 +83,8 @@ export const Chat = ({ senderId, receiverId }) => {
                 }
             </section>
             <div id="write-messages" className='enterText'>
-                <input value={inputText} onChange={onTextChange} placeholder='Enter text here' />
-                <button onClick={sendText}>send</button >
+                <Textarea value={inputText} onChange={onTextChange} placeholder='Enter text here' />
+                <Button onClick={sendText} variant="outline">send</Button >
             </div>
         </div>
     );
