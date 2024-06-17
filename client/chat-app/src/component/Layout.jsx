@@ -23,9 +23,10 @@ export const Layout = ({ userList, loggedUser, setLoggedUser }) => {
     return (
         <div className="width-fl height-fl" style={{ backgroundColor: "pink" }}>
             <div className="flex pad-2-l" style={{ height: "inherit" }}>
-                <div className="col-2 user-list" style={{ width: "20vw", backgroundColor: "pink", border: "1px solid", borderRadius: ".7em 0 0 0" }}>
+                <div className="col-2 user-list" style={{ width: "20vw", backgroundColor: "pink",borderTopLeftRadius:"2rem", boxShadow: "1em 1rem 4rem black" }}>
                     <ConnectedUsers
                         userList={userList}
+                        loggedUser={loggedUser}
                         setCurrentUser={setCurrentUser}
                         setOpenChatProfile={setOpenChatProfile} />
                 </div>

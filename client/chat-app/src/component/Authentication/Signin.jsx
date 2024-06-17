@@ -9,13 +9,13 @@ export const Signin = ({ loggedUser, setLoggedUser }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        loggedUser = JSON.parse(localStorage.getItem(`loggedUser`))
+        // localStorage.setItem(`loggedUser${response?.data?.body?.username}`, JSON.stringify(response?.data?.body))
         if (loggedUser != null) {
             navigate('/layout')
         }
         else navigate('/')
     }, [loggedUser]);
-
-
     const handleOnClick = async () => {
         try {
             const response = await axios.post('http://localhost:9000/chatapp/signIn', {
@@ -23,8 +23,8 @@ export const Signin = ({ loggedUser, setLoggedUser }) => {
                 password
             });
             if (response?.status === 200 && response?.data?.success) {
-                localStorage.setItem('loggedUser', JSON.stringify(response?.data?.body))
                 setLoggedUser(response?.data?.body);
+                localStorage.setItem(`loggedUser`, JSON.stringify(response?.data?.body))
             } else {
                 setInvalidUser(true);
                 setUsername('');
