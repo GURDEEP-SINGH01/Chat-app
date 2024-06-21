@@ -85,7 +85,7 @@ export const Chat = ({ senderId, receiverId }) => {
             </section>
             <div id="write-messages" className='enterText'>
                 <Input className="inputMessage" value={inputText} onChange={onTextChange} placeholder='Enter text here' />
-                <Button className="sendBtnMessage" onClick={sendText} variant="outline">send</Button >
+                <Button className="sendBtnMessage" onClick={sendText} variant="outline">Send</Button >
             </div>
         </div>
     );

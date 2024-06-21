@@ -143,9 +143,10 @@
   max-width: 50%;
   overflow: hidden;
 }
-.inputMessage{
+.inputMessage {
   margin-top:.8rem;
   margin-bottom: .1rem;
+  background-color: white;
   box-shadow: .1em .2em .5rem rgb(151, 149, 149);
 }
 .sendBtnMessage{
