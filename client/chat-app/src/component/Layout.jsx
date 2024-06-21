@@ -4,10 +4,12 @@ import { Chat } from "./chat/Chat";
 import { ConnectedUsers } from "./connectedUsers/ConnectedUsers";
 import { ChatProfile } from "./chatUserProfile/ChatProfile";
 import { useNavigate } from "react-router-dom";
+import { Input } from "../components/ui/input";
 
 export const Layout = ({ userList, loggedUser, setLoggedUser }) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [openChatProfile, setOpenChatProfile] = useState(false);
+    const [searchUser, setsearchUser] = useState('')
     const navigate = useNavigate();
     useEffect(() => {
         const logUser = JSON.parse(localStorage.getItem('loggedUser'));
@@ -18,12 +20,17 @@ export const Layout = ({ userList, loggedUser, setLoggedUser }) => {
             // return <div className="flex-align-center height-fl"><div className="loader" /></div>;
         }
     }, []);
-
+    const userNameSearch = (event) => {
+        setsearchUser(event.target.value)
+    }
 
     return (
-        <div className="width-fl height-fl" style={{ backgroundColor: "pink" }}>
-            <div className="flex pad-2-l" style={{ height: "inherit" }}>
-                <div className="col-2 user-list" style={{ width: "20vw", backgroundColor: "pink",borderTopLeftRadius:"2rem", boxShadow: "1em 1rem 4rem black" }}>
+        <div className="width-fl height-fl flex-column " style={{ backgroundColor: "pink" }}>
+            <div className="search">
+                <Input className='search-input' style={{ backgroundColor: "white" }} value={searchUser} onChange={userNameSearch} placeholder="Search" />
+            </div>
+            <div className="flex pad-2-l" style={{ height: "100vh" }}>
+                <div className="col-2 user-list">
                     <ConnectedUsers
                         userList={userList}
                         loggedUser={loggedUser}

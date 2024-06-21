@@ -69,8 +69,8 @@ export const Chat = ({ senderId, receiverId }) => {
 
     return (
         <div className='flex-column chat-wrapper'>
-            <Header receiverId={receiverId} />
-            <section id="display-messages" className='container'>
+            {/* <Header receiverId={receiverId} /> */}
+            <section id="display-messages" className='container' >
                 {
                     messages.map((message, index) => (
                         <div key={index}

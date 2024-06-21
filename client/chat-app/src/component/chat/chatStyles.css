@@ -112,6 +112,7 @@
 }
 
 .container {
+  height: 0vh;
   flex: 1 1 auto;
   overflow-y: auto;
 }

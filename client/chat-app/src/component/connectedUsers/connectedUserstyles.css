@@ -4,10 +4,3 @@
 .pad-1-t {padding-top: 1em;}
 .pad-1-b {padding-bottom: 1em;}
 .userlistContainer {display: 'flex'}
-.search {
-    padding: .3rem;
-    margin-top: 2rem;
-}
-.search-input {
-    background-color: #ffe9e9;
-}
