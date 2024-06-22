@@ -14,12 +14,12 @@ export const Chat = ({ senderId, receiverId }) => {
     const [inputText, setInputText] = useState('');
     const socket = useRef(null);
     const messagesEndRef = useRef(null);
-    const navigate = useNavigate(); console.log('sender', senderId, receiverId)
+    const navigate = useNavigate();
     useEffect(() => {
         senderId = JSON.parse(localStorage.getItem(`loggedUser`));
         if (senderId === null) {
             // If loggedUser is not defined, render a loading state or redirect to sign-in
-            navigate('/')
+            navigate('/signin')
             // return <div className="flex-align-center height-fl"><div className="loader" /></div>;
         }
     }, [senderId]);
@@ -69,7 +69,7 @@ export const Chat = ({ senderId, receiverId }) => {
 
     return (
         <div className='flex-column chat-wrapper'>
-            {/* <Header receiverId={receiverId} /> */}
+            <Header receiverId={receiverId} />
             <section id="display-messages" className='container' >
                 {
                     messages.map((message, index) => (

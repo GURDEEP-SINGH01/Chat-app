@@ -1,9 +1,10 @@
 import { Layout } from "./component/Layout";
 import './App.css'
 import { Signin } from "./component/Authentication/Signin";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Signup } from "./component/Authentication/Signup/Signup";
 export const App = () => {
   const [loggedUser, setLoggedUser] = useState(null)
   const [userList, setUserList] = useState([]);
@@ -12,10 +13,9 @@ export const App = () => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:9000/chatapp/allUsers');
+        const response = await axios.get(`http://localhost:9000/chatapp/${loggedUser?._id}`);
         if (response.status === 200) {
           const data = response.data;
-          // console.log(response.data)
           setUserList(data);
         } else {
           throw new Error('Failed to fetch users');
@@ -33,12 +33,18 @@ export const App = () => {
       <Router>
         <div>
           <Routes>
+            <Route path="/" element={<Navigate to="/signin" />} />
             <Route exact
-              path="/"
+              path="/signin"
               element={
                 <Signin
                   loggedUser={loggedUser}
                   setLoggedUser={setLoggedUser} />
+              } />
+            <Route exact
+              path="/signup"
+              element={
+                <Signup />
               } />
             <Route exact
               path='/layout'

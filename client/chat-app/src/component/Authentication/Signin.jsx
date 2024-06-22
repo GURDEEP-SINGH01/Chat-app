@@ -12,9 +12,9 @@ export const Signin = ({ loggedUser, setLoggedUser }) => {
         loggedUser = JSON.parse(localStorage.getItem(`loggedUser`))
         // localStorage.setItem(`loggedUser${response?.data?.body?.username}`, JSON.stringify(response?.data?.body))
         if (loggedUser != null) {
-            navigate('/layout')
+            navigate('/layout', { replace: true })
         }
-        else navigate('/')
+        else navigate('/signin', { replace: true })
     }, [loggedUser]);
     const handleOnClick = async () => {
         try {
@@ -63,7 +63,9 @@ export const Signin = ({ loggedUser, setLoggedUser }) => {
                 <div className='pad-1-t'>
                     <button type='button' style={{ width: '5em', height: '2em', backgroundColor: '#ffb6e885', border: '.1px solid #f79fdb' }} onClick={handleOnClick}>Submit</button>
                 </div>
-                <div style={{ padding: '.8em' }}> <a>Signup</a></div>
+                <div style={{ padding: '.8em' }}>
+                    <a style={{ color: "blue" }} onClick={() => navigate('/signup')} >Signup</a>
+                </div>
                 {invalidUser && <div>Not the right user</div>}
             </div >
         </div >

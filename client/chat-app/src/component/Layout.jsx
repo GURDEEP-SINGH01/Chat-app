@@ -5,30 +5,25 @@ import { ConnectedUsers } from "./connectedUsers/ConnectedUsers";
 import { ChatProfile } from "./chatUserProfile/ChatProfile";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../components/ui/input";
+import axios from "axios";
+import { SearchUser } from "./searchUser/SearchUser";
 
 export const Layout = ({ userList, loggedUser, setLoggedUser }) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [openChatProfile, setOpenChatProfile] = useState(false);
-    const [searchUser, setsearchUser] = useState('')
     const navigate = useNavigate();
     useEffect(() => {
         const logUser = JSON.parse(localStorage.getItem('loggedUser'));
         setLoggedUser(logUser);
         if (loggedUser === null) {
-            // If loggedUser is not defined, render a loading state or redirect to sign-in
-            navigate('/')
-            // return <div className="flex-align-center height-fl"><div className="loader" /></div>;
+            navigate('/signin')
         }
     }, []);
-    const userNameSearch = (event) => {
-        setsearchUser(event.target.value)
-    }
+   
 
     return (
         <div className="width-fl height-fl flex-column " style={{ backgroundColor: "pink" }}>
-            <div className="search">
-                <Input className='search-input' style={{ backgroundColor: "white" }} value={searchUser} onChange={userNameSearch} placeholder="Search" />
-            </div>
+           <SearchUser></SearchUser>
             <div className="flex pad-2-l" style={{ height: "100vh" }}>
                 <div className="col-2 user-list">
                     <ConnectedUsers

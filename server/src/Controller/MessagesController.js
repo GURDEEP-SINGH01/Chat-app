@@ -56,7 +56,6 @@ exports.findlast=async(req,res)=>{
         { users: [toObjectId, fromObjectId] }
       ]
     }).sort({ createdAt: 1 });
-    console.log(recentMessage)
     if (recentMessage) {
       res.json(recentMessage);
     } else {

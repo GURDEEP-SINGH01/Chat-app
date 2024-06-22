@@ -1,0 +1,73 @@
+.username-pad {
+    padding-right:2em;
+}
+.name-pass-fonstsize {
+    font-size: medium;  
+    font-weight: 500;    
+}
+.password-pad {
+    padding-right:.6em;
+}
+.user_pass_pad {
+    padding-bottom:1.5em;
+}
+.email-pad {
+    padding-right:2.2em;
+}
+.email_pass_pad {
+    padding-bottom:1.5em;
+}
+.input{
+    border: 0;
+    border-radius: .6em;
+    height: 1.4rem;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 1em;font-weight: 600;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+input:focus{
+    outline: none;
+}
+.height-half{
+    height:50vh;
+}
+.width-half{
+    width:50vw;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.width-fl {width:100vw;}
+.height-fl {height:100vh;}
+.height-inherit {height: inherit}
+.flex {display: flex;}
+.flex-justify-spacebetween {justify-content: space-between;}
+
+.pad-1-lg {padding: 1em;}
+.pad-1-l {padding-left: 1em;}
+.pad-1-r {padding-right: 1em;}
+.pad-1-t {padding-top: 1em;}
+.pad-1-b {padding-bottom: 1em;}
+
+.pad-2-lg {padding: 2em;}
+.pad-2-l {padding-left: 2em;}
+.pad-2-r {padding-right: 2em;}
+.pad-2-t {padding-top: 2em;}
+.pad-2-b {padding-bottom: 2em;}
+
+.flex-column {display:flex; flex-direction: column; }
+.row-gap {
+  gap: 1em;
+}
+.flex-row {display:flex; flex-direction: row;}
+.flex-align-center { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,15 +1,16 @@
 
-const User=require('../Model/User')
-exports.addUser=async (req, res) => {
+const User=require('../Model/User');
+exports.signUp=async (req, res) => {
     try {
         const user = new User({
         email: req.body.email,
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        friends:[]
         });
 
         const newUser = await user.save();
-        res.status(201).json(newUser);
+        res.status(201).json({message:"created",newUser});
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -30,8 +31,9 @@ exports.signIn = async (req, res) => {
 };
 
 exports.allUsers = async (req,res) => {
- try {
-    const users = await User.find();
+ try {console.log('finding')
+    const {getUsers}=req.params
+    const users = await User.find({ username: { $regex: getUsers, $options: 'i' } });console.log(users,getUsers,'users')
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });

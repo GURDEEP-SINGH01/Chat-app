@@ -2,10 +2,15 @@ const express = require("express");
 const routes = express.Router();   
 const userController=require('../Controller/UserController')
 const messageController=require('../Controller/MessagesController')
+const friendsController=require('../Controller/FriendsController')
 
-routes.post('/addUser',userController.addUser)
 routes.post('/signIn',userController.signIn)
-routes.get('/allUsers',userController.allUsers)
+routes.post('/signUp',userController.signUp)
+routes.get('/:getUsers',userController.allUsers)
+
+routes.post('/add',friendsController.add)
+// routes.post('/confirm',friendsController.confirm)
+routes.get('/:userId',friendsController.friendsList)
 
 routes.post('/getMessage',messageController.getMessage)
 routes.post('/addMessage',messageController.addMessage)

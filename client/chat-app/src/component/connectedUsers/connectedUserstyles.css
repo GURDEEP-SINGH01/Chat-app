@@ -3,4 +3,8 @@
 .pad-1-r {padding-right: 1em;}
 .pad-1-t {padding-top: 1em;}
 .pad-1-b {padding-bottom: 1em;}
-.userlistContainer {display: 'flex'}
+.userlistContainer {
+    display: 'flex';
+    margin-top: 1em;
+    margin-left: 1.6em;
+}

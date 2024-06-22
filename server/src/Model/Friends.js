@@ -1,0 +1,13 @@
+const mongoose = require('mongoose');
+
+const FriendshipSchema = new mongoose.Schema({
+    friendId: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true
+    }],
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('Friendship', FriendshipSchema);
