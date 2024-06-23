@@ -9,25 +9,6 @@ export const App = () => {
   const [loggedUser, setLoggedUser] = useState(null)
   const [userList, setUserList] = useState([]);
 
-
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const response = await axios.get(`http://localhost:9000/chatapp/${loggedUser?._id}`);
-        if (response.status === 200) {
-          const data = response.data;
-          setUserList(data);
-        } else {
-          throw new Error('Failed to fetch users');
-        }
-      } catch (error) {
-        console.error('Error fetching users:', error);
-      }
-    }
-    getUsers();
-  }, [])
-
-
   return (
     <div className="width-fl height-fl" >
       <Router>
@@ -51,7 +32,9 @@ export const App = () => {
               element={
                 <Layout
                   userList={userList}
-                  loggedUser={loggedUser} setLoggedUser={setLoggedUser} />
+                  setUserList={setUserList}
+                  loggedUser={loggedUser}
+                  setLoggedUser={setLoggedUser} />
               } />
           </Routes>
         </div>

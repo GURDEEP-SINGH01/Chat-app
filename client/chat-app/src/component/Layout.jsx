@@ -8,7 +8,7 @@ import { Input } from "../components/ui/input";
 import axios from "axios";
 import { SearchUser } from "./searchUser/SearchUser";
 
-export const Layout = ({ userList, loggedUser, setLoggedUser }) => {
+export const Layout = ({ userList, loggedUser, setLoggedUser, setUserList }) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [openChatProfile, setOpenChatProfile] = useState(false);
     const navigate = useNavigate();
@@ -17,13 +17,22 @@ export const Layout = ({ userList, loggedUser, setLoggedUser }) => {
         setLoggedUser(logUser);
         if (loggedUser === null) {
             navigate('/signin')
+        } else {
+            getFriends()
         }
     }, []);
-   
-
+    const getFriends = async () => {
+        const response = await axios.get(`http://localhost:9000/chatapp/${loggedUser?._id}`);
+        if (response.status === 200) {
+            const data = response.data; 
+            setUserList(data);
+        } else {
+            throw new Error('Failed to fetch users');
+        }
+    }
     return (
-        <div className="width-fl height-fl flex-column " style={{ backgroundColor: "pink" }}>
-           <SearchUser></SearchUser>
+        <div className="width-fl height-fl flex-column" style={{ backgroundColor: "pink" }}>
+            <SearchUser setUserList={setUserList} loggedUser={loggedUser} />
             <div className="flex pad-2-l" style={{ height: "100vh" }}>
                 <div className="col-2 user-list">
                     <ConnectedUsers

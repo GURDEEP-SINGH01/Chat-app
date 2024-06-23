@@ -19,8 +19,7 @@ exports.add=async (req, res) => {
             { $addToSet: { friends: userId } }, // $addToSet ensures no duplicates
             { new: true } // Return the updated document
         );
-      
-        res.status(201).json({message:"useradded",data:user});
+        res.status(201).json({message:"useradded",friend});
     }
     catch(err){
         res.status(500).json({message:"Internal Server error"})

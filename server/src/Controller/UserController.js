@@ -29,11 +29,25 @@ exports.signIn = async (req, res) => {
     res.status(500).json({ success: false, message: 'Server error' });
   }
 };
+exports.getFriends = async (req,res) => {
+ try {
+    const {getConnectedFriends}=req.params
+    const friendsList=[]
+    const user = await User.findOne({ _id:getConnectedFriends });
+    for (const friend of user.friends) {
+      const userFriend = await User.findOne({ _id: friend });
+      friendsList.push(userFriend);
+    }
+    res.status(200).json(friendsList);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
 
 exports.allUsers = async (req,res) => {
- try {console.log('finding')
+ try {
     const {getUsers}=req.params
-    const users = await User.find({ username: { $regex: getUsers, $options: 'i' } });console.log(users,getUsers,'users')
+    const users = await User.find({ username: { $regex: getUsers, $options: 'i' } });console.log(users)
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });

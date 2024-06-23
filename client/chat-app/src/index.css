@@ -44,18 +44,6 @@ code {
   justify-content: center;
 }
 /* HTML: <div class="loader"></div> */
-.loader {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  display: block;
-  margin:15px auto;
-  position: relative;
-  background: #FFF;
-  box-shadow: -24px 0 #FFF, 24px 0 #FFF;
-  box-sizing: border-box;
-  animation: shadowPulse 2s linear infinite;
-}
 
 .search {
   height:auto;
@@ -67,20 +55,7 @@ code {
   border-top-left-radius: 2rem;
   box-shadow: -.1em .8rem 2rem -.8rem black;
 }
-@keyframes shadowPulse {
-  33% {
-    background: #FFF;
-    box-shadow: -24px 0 pink, 24px 0 #FFF;
-  }
-  66% {
-    background: pink;
-    box-shadow: -24px 0 #FFF, 24px 0 #FFF;
-  }
-  100% {
-    background: #FFF;
-    box-shadow: -24px 0 #FFF, 24px 0 pink;
-  }
-}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

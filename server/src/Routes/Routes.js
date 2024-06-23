@@ -6,7 +6,8 @@ const friendsController=require('../Controller/FriendsController')
 
 routes.post('/signIn',userController.signIn)
 routes.post('/signUp',userController.signUp)
-routes.get('/:getUsers',userController.allUsers)
+routes.get('/search/:getUsers',userController.allUsers)
+routes.get('/:getConnectedFriends',userController.getFriends)
 
 routes.post('/add',friendsController.add)
 // routes.post('/confirm',friendsController.confirm)

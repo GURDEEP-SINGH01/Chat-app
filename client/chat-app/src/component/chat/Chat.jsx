@@ -3,10 +3,8 @@ import "./chatStyles.css";
 import io from 'socket.io-client';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import { Textarea } from 'src/components/ui/textarea';
 import { Button } from 'src/components/ui/button';
 import { Input } from 'src/components/ui/input';
-import { ShadowIcon } from '@radix-ui/react-icons';
 import Header from '../Header/Header';
 
 export const Chat = ({ senderId, receiverId }) => {
@@ -18,9 +16,7 @@ export const Chat = ({ senderId, receiverId }) => {
     useEffect(() => {
         senderId = JSON.parse(localStorage.getItem(`loggedUser`));
         if (senderId === null) {
-            // If loggedUser is not defined, render a loading state or redirect to sign-in
             navigate('/signin')
-            // return <div className="flex-align-center height-fl"><div className="loader" /></div>;
         }
     }, [senderId]);
     const sendText = async () => {
