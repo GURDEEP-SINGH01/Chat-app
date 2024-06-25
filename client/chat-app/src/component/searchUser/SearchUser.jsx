@@ -20,13 +20,18 @@ export const SearchUser = ({ setUserList, loggedUser }) => {
             { userId: loggedUser?._id, friendId: user?._id })
             .then(res => { setUserList(prevList => [...prevList, res.data.friend]) })
             .catch(err => console.log(err.message))
-        setlistUsers([])
+        setlistUsers([]);
+        setsearchUser('');
     }
     return (
         <div className="search">
             <Input
                 className='search-input'
-                style={{ backgroundColor: "white" }}
+                style={{
+                    backgroundColor: "white",
+                    width: "81.5%",
+                    marginLeft: "18.5%"
+                }}
                 value={searchUser}
                 onChange={userNameSearch}
                 placeholder="Search"

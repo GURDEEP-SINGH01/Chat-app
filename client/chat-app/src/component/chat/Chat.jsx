@@ -14,11 +14,10 @@ export const Chat = ({ senderId, receiverId }) => {
     const messagesEndRef = useRef(null);
     const navigate = useNavigate();
     useEffect(() => {
-        senderId = JSON.parse(localStorage.getItem(`loggedUser`));
         if (senderId === null) {
             navigate('/signin')
         }
-    }, [senderId]);
+    }, []);
     const sendText = async () => {
         if (inputText.trim() !== '') {
             await axios.post('http://localhost:9000/chatapp/addMessage', {
@@ -30,7 +29,7 @@ export const Chat = ({ senderId, receiverId }) => {
                 senderId: senderId._id,
                 receiverId: receiverId._id,
                 message: inputText
-            });
+            }); console.log("message send,", inputText)
             setMessages((prevMessages) => [...prevMessages, { fromSelf: true, message: inputText }]);
             setInputText('');
         }
@@ -42,7 +41,8 @@ export const Chat = ({ senderId, receiverId }) => {
         socket.current = io('http://localhost:9000');
         socket.current.emit('addUser', senderId._id);
         socket.current.on('getMessage', ({ senderId, message }) => {
-            if (senderId._id === receiverId._id) {
+            if (senderId === receiverId._id) {
+                console.log("message received,", message)
                 setMessages((prevMessages) => [...prevMessages, { fromSelf: false, message }]);
             }
         });
