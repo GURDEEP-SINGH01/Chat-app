@@ -29,7 +29,7 @@ export const SearchUser = ({ setUserList, loggedUser }) => {
                 className='search-input'
                 style={{
                     backgroundColor: "white",
-                    width: "81.5%",
+                    width: "81.7%",
                     marginLeft: "18.5%"
                 }}
                 value={searchUser}
@@ -37,7 +37,13 @@ export const SearchUser = ({ setUserList, loggedUser }) => {
                 placeholder="Search"
             />
             <div>{listUsers?.length > 0 && listUsers.map((user, index) => (
-                <li key={index} style={{ background: "red", paddingLeft: "1em" }} onClick={() => handleSelectUser(user)} >{user?.username}</li>)
+                <li key={index} style={{
+                    background: "#f5e6e6",
+                    paddingLeft: "1em",
+                    border: "1em", width: "81.2%", 
+                    marginLeft: "19%",
+                    borderRadius: ".2em"
+                }} onClick={() => handleSelectUser(user)} >{user?.username}</li>)
             )}
             </div>
         </div>
