@@ -32,7 +32,7 @@ export const Layout = ({ userList, loggedUser, setLoggedUser, setUserList }) => 
     }
     return (
         <div className="width-fl height-fl flex-column" style={{ backgroundColor: "pink" }}>
-            <SearchUser setUserList={setUserList} loggedUser={loggedUser} />
+            <SearchUser setUserList={setUserList} loggedUser={loggedUser} setLoggedUser={setLoggedUser} />
             <div className="flex pad-2-l" style={{ height: "100vh" }}>
                 <div className="col-2 user-list">
                     <ConnectedUsers

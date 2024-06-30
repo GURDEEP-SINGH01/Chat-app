@@ -45,10 +45,7 @@ code {
 }
 /* HTML: <div class="loader"></div> */
 
-.search {
-  height:auto;
-  margin: .3rem;
-}
+
 .user-list{
   width: 20vw;
   background-Color: pink;

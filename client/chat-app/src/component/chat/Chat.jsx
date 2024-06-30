@@ -41,8 +41,8 @@ export const Chat = ({ senderId, receiverId }) => {
         socket.current = io('http://localhost:9000');
         socket.current.emit('addUser', senderId._id);
         socket.current.on('getMessage', ({ senderId, message }) => {
-            if (senderId === receiverId._id) {
-                console.log("message received,", message)
+            if (senderId !== receiverId._id) {
+                console.log("message received,", message, senderId, receiverId._id)
                 setMessages((prevMessages) => [...prevMessages, { fromSelf: false, message }]);
             }
         });

@@ -1,1 +1,95 @@
-.search-input{}
+.width-fl {
+  width: 100vw;
+}
+
+.height-fl {
+  height: 100vh;
+}
+
+.height-inherit {
+  height: inherit;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-justify-spacebetween {
+  justify-content: space-between;
+}
+
+.pad-1-lg {
+  padding: 1em;
+}
+
+.pad-1-l {
+  padding-left: 1em;
+}
+
+.pad-1-r {
+  padding-right: 1em;
+}
+
+.pad-1-t {
+  padding-top: 1em;
+}
+
+.pad-1-b {
+  padding-bottom: 1em;
+}
+
+.pad-2-lg {
+  padding: 2em;
+}
+
+.pad-2-l {
+  padding-left: 2em;
+}
+
+.pad-2-r {
+  padding-right: 2em;
+}
+
+.pad-2-t {
+  padding-top: 2em;
+}
+
+.pad-2-b {
+  padding-bottom: 2em;
+}
+
+.flex-column {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.row-gap {
+  gap: 1em;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-align-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search {
+  height:auto;
+  margin: .3rem;
+  margin-left: 18.8%;
+  width: 100%;
+}
+.user-profile {
+  background-image: url('../../resource/small-default-pic.png');
+  border: 2px solid red;
+  border-radius: 2rem;
+}
+.user-profile-button {
+  background-image: url('../../resource/small-default-pic.png');
+  margin-top: .4rem;
+}
