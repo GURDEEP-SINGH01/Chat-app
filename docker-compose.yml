@@ -2,6 +2,7 @@ version: '1.0'
 
 services:
   backend:
+    image: devsin10/chatapp:backend
     build:
       context: ./server
     ports:
@@ -12,6 +13,7 @@ services:
       - mongo
 
   frontend:
+    image: devsin10/chatapp:frontend
     build:
       context: ./client/chat-app
     ports:
