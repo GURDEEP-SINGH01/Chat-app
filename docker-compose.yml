@@ -1,0 +1,28 @@
+version: '1.0'
+
+services:
+  backend:
+    build:
+      context: ./server
+    ports:
+      - "9000:9000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/chatApp
+    depends_on:
+      - mongo
+
+  frontend:
+    build:
+      context: ./client/chat-app
+    ports:
+      - "3000:3000"
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

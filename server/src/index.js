@@ -19,8 +19,9 @@ app.use(express.json());
 // });
 // db.once("open", () => {
 //   console.log("Connection made with Db");
-// });
-mongoose.connect('mongodb://127.0.0.1:27017/chatApp').then(() => console.log('Database connected'))
+// });]
+const mongoURI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/chatApp';
+mongoose.connect(mongoURI).then(() => console.log('Database connected'))
   .catch(err => console.error('Database connection error:', err));
 
 const io=new Server(server,{
